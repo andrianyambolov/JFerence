@@ -2,9 +2,15 @@
 
 The **JFerence** toolbox is MATLAB toolbox designed for conducting joint inference on impulse responses and forecasts, particularly in Bayesian econometric models. The primary function, `joint_inference`, enables users to compute credible sets, error bands, and central tendencies based on posterior draws, using a range of inference methods and configurations.
 
-### Overview
+### Supported Joint Inference Estimators
 
-The `joint_inference` function provides joint inference capabilities for Bayesian time series models by generating credible sets, error bands, and central tendency estimates. The function is highly customizable, allowing users to choose the type of inference, estimation method, loss function, calibration settings, credibility levels, and central tendency measure.
+The JFerence toolbox supports the following joint inference estimators:
+
+- **sup-t**: Proposed by Montiel Olea and Plagborg-Møller (2018) in *Simultaneous confidence bands: Theory, implementation, and an application to SVARs*.
+
+- **min-max**: Introduced by Inoue and Kilian (2022) in *Joint Bayesian Inference About Impulse Responses in VAR Models*. The toolbox further includes calibration routines to adjust error bands, ensuring they achieve the nominal probability content.
+
+- **Bonferroni and Sidak corrections**: These corrections for pointwise intervals are traditionally used as simpler, naive methods for estimating joint error bands.
 
 ### Example Usage
 
@@ -18,12 +24,6 @@ To use the example:
 
 1. Run `run_me.m` to estimate the fiscal VAR model and generate IRFs.
 2. Run `plot_figure.m` to compute joint inference on the IRFs and plot the results.
-
-### Important Notes
-
-- **Calibration**: Calibration methods are available for specific inference methods. For example, `'BDR'` (boundary draw rejection) and `'LQO'` (loss quantile optimization) are compatible with `'min-max'` inference.
-- **Loss Functions**: The `LossFunction` field is only used with the `'min-max'` method. If `LossFunction` is not specified, it defaults to `'absolute'`.
-- **Central Tendency**: The `CentralTendency` field allows selection of `'median'`, `'mean'`, or `'Bayes'` as the central measure, with `'Bayes'` specifically supported for `'min-max'`.
 
 ### Further Information
 
