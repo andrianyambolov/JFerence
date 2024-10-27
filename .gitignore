@@ -9,6 +9,7 @@
 *.csv
 *.xlsx
 *.xls
+!dataset.xlsx
 *.html
 *.txt
 *.tex
